@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>云起小财</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fdfbf7;
+      font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+      color: #4a4034;
+    }
+    .box { text-align: center; padding: 24px; }
+    .spin {
+      width: 32px; height: 32px;
+      margin: 0 auto 16px;
+      border: 3px solid #e8e0d6;
+      border-top-color: #d4a056;
+      border-radius: 50%;
+      animation: r 0.8s linear infinite;
+    }
+    @keyframes r { to { transform: rotate(360deg); } }
+    p { font-size: 14px; margin: 0; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="spin"></div>
+    <p>正在进入云起小财...</p>
+  </div>
+  <script>
+    // 目标地址由看门狗脚本自动更新
+    const TARGET = "https://placeholder.r9.cpolar.top";
+    window.location.replace(TARGET);
+  </script>
+</body>
+</html>
