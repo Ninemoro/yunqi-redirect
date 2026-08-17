@@ -55,6 +55,27 @@
     }
     .btn:active { transform: scale(0.97); }
     .hint { font-size: 11px; color: #c4b8a6; margin: 16px 0 0; }
+    .addr-box {
+      margin-top: 18px;
+      padding: 10px 12px;
+      background: #faf6ef;
+      border-radius: 10px;
+      font-size: 11px;
+      color: #a89b8a;
+      word-break: break-all;
+      text-align: left;
+    }
+    .addr-box b { display: block; margin-bottom: 4px; color: #8d7f6a; }
+    .copy-btn {
+      margin-top: 6px;
+      border: 1px solid #ddd2c0;
+      background: #fff;
+      color: #7a6c57;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -64,12 +85,33 @@
     <p class="desc">你的记账小管家</p>
     <button class="btn" id="goBtn">打开应用</button>
     <p class="hint">点击按钮进入应用</p>
+    <div class="addr-box">
+      <b>直接添加下面的地址到主屏幕，可获得全屏体验（无导航栏）</b>
+      <span id="addrText"></span>
+      <button class="copy-btn" id="copyBtn">复制地址</button>
+    </div>
   </div>
   <script>
     // 目标地址由看门狗脚本自动更新（保持 const TARGET 行不变）
     const TARGET = "https://324ae835.r7.cpolar.cn";
     document.getElementById('goBtn').addEventListener('click', function () {
       window.location.href = TARGET;
+    });
+    var addrEl = document.getElementById('addrText');
+    addrEl.textContent = TARGET;
+    document.getElementById('copyBtn').addEventListener('click', function () {
+      var text = TARGET;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { alert('地址已复制'); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('地址已复制');
+      }
     });
   </script>
 </body>
